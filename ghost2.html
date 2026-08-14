@@ -1,0 +1,4649 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>GHOST GATE</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =====================================================
+   ROOT
+===================================================== */
+
+:root{
+    --bg:#050809;
+    --bg2:#0b1112;
+    --card:rgba(255,255,255,.035);
+    --text:#f4f8f8;
+    --muted:#849292;
+
+    --cyan:#19e6d2;
+    --cyan-light:#83fff4;
+
+    --border:rgba(25,230,210,.22);
+
+    --silver:#c8d0d2;
+    --gold:#e8bd55;
+    --diamond:#70dfff;
+
+    --danger:#ff5f70;
+    --success:#35e6a1;
+
+    --shadow:0 30px 90px rgba(0,0,0,.5);
+
+    --ease:.35s cubic-bezier(.2,.8,.2,1);
+}
+
+body.light{
+    --bg:#edf6f5;
+    --bg2:#ffffff;
+    --card:rgba(0,0,0,.035);
+    --text:#111817;
+    --muted:#647473;
+    --cyan:#00a99d;
+    --cyan-light:#00cfc0;
+    --border:rgba(0,169,157,.22);
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Vazirmatn",sans-serif;
+    overflow-x:hidden;
+    transition:.5s;
+}
+
+button,input{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container{
+    width:min(1200px,90%);
+    margin:auto;
+}
+
+.section{
+    padding:110px 0;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+    position:fixed;
+    top:15px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(1200px,94%);
+    z-index:1000;
+
+    padding:14px 20px;
+
+    border:1px solid var(--border);
+    border-radius:17px;
+
+    background:rgba(5,10,11,.65);
+    backdrop-filter:blur(22px);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    direction:ltr;
+
+    transition:var(--ease);
+}
+
+body.light header{
+    background:rgba(255,255,255,.72);
+}
+
+
+/* LOGO */
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.logo-symbol{
+    width:39px;
+    height:39px;
+    border:1px solid var(--cyan);
+    border-radius:50%;
+
+    display:grid;
+    place-items:center;
+
+    color:var(--cyan);
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:17px;
+
+    box-shadow:0 0 22px rgba(25,230,210,.15);
+}
+
+.logo-text{
+    font-family:"Cormorant Garamond",serif;
+    font-size:23px;
+    letter-spacing:2px;
+}
+
+
+/* HEADER ACTIONS */
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.icon-btn{
+    width:40px;
+    height:40px;
+    border:none;
+    background:transparent;
+    color:var(--text);
+
+    display:grid;
+    place-items:center;
+
+    position:relative;
+    transition:var(--ease);
+}
+
+.icon-btn:hover{
+    color:var(--cyan);
+    transform:translateY(-2px);
+}
+
+.cart-count{
+    position:absolute;
+    top:1px;
+    right:0;
+
+    min-width:17px;
+    height:17px;
+
+    padding:0 4px;
+
+    border-radius:20px;
+
+    background:var(--cyan);
+    color:#001411;
+
+    font-size:9px;
+    font-weight:700;
+
+    display:grid;
+    place-items:center;
+}
+
+
+/* THEME */
+
+.theme-toggle{
+    width:61px;
+    height:31px;
+
+    border:1px solid var(--border);
+    border-radius:30px;
+
+    background:var(--card);
+    color:var(--cyan);
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+}
+
+.theme-circle{
+    position:absolute;
+
+    width:25px;
+    height:25px;
+
+    left:3px;
+    top:2px;
+
+    border-radius:50%;
+
+    background:var(--cyan);
+
+    transition:var(--ease);
+}
+
+body.light .theme-circle{
+    left:32px;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+
+    background:
+        radial-gradient(
+            circle at 30% 50%,
+            rgba(25,230,210,.10),
+            transparent 30%
+        );
+}
+
+
+/* GHOST GATE RIGHT */
+
+.hero-title{
+    position:absolute;
+
+    right:8%;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    z-index:5;
+
+    direction:ltr;
+    text-align:right;
+}
+
+.hero-title h1{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(70px,9vw,145px);
+
+    line-height:.77;
+    font-weight:400;
+
+    letter-spacing:-5px;
+
+    color:var(--text);
+
+    transition:.5s;
+
+    text-shadow:0 0 35px rgba(25,230,210,.08);
+}
+
+.hero-title h1:hover{
+    color:var(--cyan);
+    text-shadow:0 0 45px rgba(25,230,210,.25);
+}
+
+
+/* HERO VISUAL */
+
+.hero-visual{
+    position:absolute;
+
+    left:-5%;
+    top:0;
+
+    width:65%;
+    height:100%;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(25,230,210,.15),
+            transparent 38%
+        );
+}
+
+
+/* PORTAL */
+
+.portal{
+    position:absolute;
+
+    width:480px;
+    height:630px;
+
+    left:20%;
+    top:17%;
+
+    border:2px solid var(--cyan);
+
+    border-radius:50% 50% 5% 5%;
+
+    box-shadow:
+        0 0 35px rgba(25,230,210,.3),
+        inset 0 0 30px rgba(25,230,210,.1);
+
+    transform:
+        perspective(700px)
+        rotateY(10deg);
+
+    animation:portalGlow 4s ease-in-out infinite;
+}
+
+
+/* HERO PRODUCT */
+
+.hero-product{
+    position:absolute;
+
+    width:230px;
+    height:320px;
+
+    left:36%;
+    top:32%;
+
+    border-radius:25px;
+
+    background:linear-gradient(145deg,#263535,#020606);
+
+    border:1px solid var(--cyan);
+
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.8),
+        0 0 40px rgba(25,230,210,.2);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    animation:floating 5s ease-in-out infinite;
+}
+
+.hero-product::after{
+    content:"GG";
+
+    font-family:"Cormorant Garamond",serif;
+
+    color:var(--cyan);
+
+    font-size:30px;
+
+    letter-spacing:5px;
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.section-heading{
+    margin-bottom:45px;
+}
+
+.eyebrow{
+    color:var(--cyan);
+    font-size:10px;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+.section-title{
+    font-size:45px;
+    font-weight:500;
+}
+
+
+/* =====================================================
+   PRODUCTS
+===================================================== */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+
+/* PRODUCT CARD */
+
+.product-card{
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    overflow:hidden;
+
+    background:var(--card);
+
+    transition:var(--ease);
+
+    position:relative;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+    box-shadow:var(--shadow);
+}
+
+
+/* CARD THEMES */
+
+.product-card.silver{
+    --product-color:var(--silver);
+}
+
+.product-card.gold{
+    --product-color:var(--gold);
+}
+
+.product-card.diamond{
+    --product-color:var(--diamond);
+}
+
+.product-card.silver:hover{
+    border-color:var(--silver);
+}
+
+.product-card.gold:hover{
+    border-color:var(--gold);
+}
+
+.product-card.diamond:hover{
+    border-color:var(--diamond);
+}
+
+
+/* PRODUCT IMAGE */
+
+.product-image{
+    height:350px;
+
+    position:relative;
+    overflow:hidden;
+
+    display:grid;
+    place-items:center;
+
+    background:
+        radial-gradient(
+            circle,
+            color-mix(
+                in srgb,
+                var(--product-color) 16%,
+                transparent
+            ),
+            transparent 58%
+        );
+}
+
+.fake-product{
+    width:175px;
+    height:245px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #273434,
+            #020606
+        );
+
+    border:1px solid var(--product-color);
+
+    box-shadow:
+        0 30px 50px rgba(0,0,0,.5);
+
+    display:grid;
+    place-items:center;
+
+    transition:.5s;
+
+    color:var(--product-color);
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:25px;
+
+    letter-spacing:4px;
+}
+
+.product-card:hover .fake-product{
+    transform:scale(1.07) rotate(2deg);
+
+    box-shadow:
+        0 0 45px
+        color-mix(
+            in srgb,
+            var(--product-color) 22%,
+            transparent
+        );
+}
+
+
+/* PRODUCT INFO */
+
+.product-info{
+    padding:23px;
+
+    border-top:
+        1px solid var(--border);
+}
+
+.product-info h3{
+    font-size:20px;
+    font-weight:500;
+}
+
+.product-price{
+    color:var(--product-color,var(--cyan));
+
+    margin-top:8px;
+
+    font-size:13px;
+}
+
+.product-actions{
+    display:flex;
+    gap:9px;
+
+    margin-top:18px;
+}
+
+.product-link{
+    flex:1;
+
+    padding:11px;
+
+    border:1px solid var(--border);
+
+    border-radius:5px;
+
+    background:transparent;
+
+    color:var(--text);
+
+    font-size:10px;
+
+    transition:var(--ease);
+}
+
+.product-link:hover{
+    border-color:var(--product-color,var(--cyan));
+    color:var(--product-color,var(--cyan));
+}
+
+.add-cart{
+    width:44px;
+
+    border:1px solid var(--product-color,var(--cyan));
+
+    border-radius:5px;
+
+    background:rgba(25,230,210,.08);
+
+    color:var(--product-color,var(--cyan));
+
+    transition:var(--ease);
+}
+
+.add-cart:hover{
+    background:var(--product-color,var(--cyan));
+    color:#001412;
+}
+
+
+/* =====================================================
+   FEATURED
+===================================================== */
+
+.featured{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    border:1px solid var(--border);
+    border-radius:16px;
+
+    overflow:hidden;
+
+    background:var(--card);
+}
+
+.featured-image{
+    min-height:500px;
+
+    display:grid;
+    place-items:center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(112,223,255,.16),
+            transparent 50%
+        );
+}
+
+.featured-bottle{
+    width:220px;
+    height:350px;
+
+    border:1px solid var(--diamond);
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #263434,
+            #020606
+        );
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.7),
+        0 0 50px rgba(112,223,255,.2);
+
+    display:grid;
+    place-items:center;
+
+    color:var(--diamond);
+
+    font-family:"Cormorant Garamond",serif;
+
+    letter-spacing:3px;
+}
+
+.featured-content{
+    padding:60px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.featured-content h2{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:60px;
+
+    font-weight:400;
+
+    direction:ltr;
+
+    margin-bottom:18px;
+}
+
+.featured-content p{
+    color:var(--muted);
+
+    line-height:2;
+
+    max-width:450px;
+
+    margin-bottom:20px;
+}
+
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.brand{
+    text-align:center;
+    padding:120px 20px;
+}
+
+.brand h2{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(50px,7vw,90px);
+
+    font-weight:400;
+
+    direction:ltr;
+
+    margin-bottom:20px;
+}
+
+.brand p{
+    max-width:550px;
+    margin:auto;
+
+    color:var(--muted);
+
+    line-height:2;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    border-top:1px solid var(--border);
+    padding:30px 0;
+}
+
+.footer-bottom{
+    display:flex;
+    justify-content:space-between;
+
+    color:var(--muted);
+
+    font-size:10px;
+}
+
+
+/* =====================================================
+   OVERLAYS
+===================================================== */
+
+.cart-overlay,
+.modal-overlay,
+.product-modal-overlay,
+.admin-overlay{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.72);
+
+    backdrop-filter:blur(10px);
+
+    z-index:2000;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.35s;
+}
+
+.cart-overlay.active,
+.modal-overlay.active,
+.product-modal-overlay.active,
+.admin-overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+
+/* =====================================================
+   CART
+===================================================== */
+
+.cart-drawer{
+    position:fixed;
+
+    top:0;
+    right:0;
+
+    width:min(470px,94%);
+
+    height:100vh;
+
+    background:var(--bg2);
+
+    border-left:1px solid var(--border);
+
+    z-index:2100;
+
+    transform:translateX(100%);
+
+    transition:.45s cubic-bezier(.2,.8,.2,1);
+
+    display:flex;
+    flex-direction:column;
+}
+
+.cart-drawer.active{
+    transform:translateX(0);
+}
+
+.cart-header{
+    padding:25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border-bottom:1px solid var(--border);
+}
+
+.cart-header h2{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:32px;
+
+    font-weight:400;
+}
+
+.close-btn{
+    width:38px;
+    height:38px;
+
+    border:1px solid var(--border);
+
+    border-radius:50%;
+
+    background:transparent;
+
+    color:var(--text);
+
+    font-size:20px;
+}
+
+.cart-items{
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:20px;
+}
+
+.empty-cart{
+    text-align:center;
+
+    padding:100px 20px;
+
+    color:var(--muted);
+}
+
+
+/* CART ITEM */
+
+.cart-item{
+    padding:16px 0;
+
+    border-bottom:1px solid var(--border);
+
+    display:flex;
+
+    gap:14px;
+}
+
+.cart-item-image{
+    width:70px;
+    height:85px;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    display:grid;
+    place-items:center;
+
+    color:var(--cyan);
+
+    font-family:"Cormorant Garamond",serif;
+
+    background:linear-gradient(145deg,#263434,#020606);
+}
+
+.cart-item-info{
+    flex:1;
+}
+
+.cart-item-info h4{
+    font-size:13px;
+    line-height:1.8;
+}
+
+.cart-item-price{
+    color:var(--cyan);
+
+    font-size:12px;
+
+    margin-top:4px;
+}
+
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    margin-top:10px;
+}
+
+.quantity button{
+    width:27px;
+    height:27px;
+
+    border:1px solid var(--border);
+
+    background:transparent;
+
+    color:var(--text);
+
+    border-radius:4px;
+}
+
+.quantity button:hover{
+    border-color:var(--cyan);
+    color:var(--cyan);
+}
+
+.remove-item{
+    color:var(--danger)!important;
+    border:none!important;
+    width:auto!important;
+    margin-right:5px;
+}
+
+.cart-footer{
+    padding:20px;
+
+    border-top:1px solid var(--border);
+}
+
+.cart-total{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:13px;
+}
+
+.cart-total span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.cart-total strong{
+    color:var(--cyan);
+    font-size:24px;
+}
+
+.cart-buttons{
+    display:flex;
+    gap:8px;
+}
+
+.checkout-btn,
+.clear-cart-btn{
+    flex:1;
+
+    padding:15px;
+
+    border-radius:6px;
+
+    font-weight:700;
+}
+
+.checkout-btn{
+    border:1px solid var(--cyan);
+
+    background:var(--cyan);
+
+    color:#001412;
+}
+
+.clear-cart-btn{
+    border:1px solid var(--border);
+
+    background:transparent;
+
+    color:var(--danger);
+}
+
+
+/* =====================================================
+   ACCOUNT
+===================================================== */
+
+.account-modal{
+    width:min(420px,90%);
+
+    background:var(--bg2);
+
+    border:1px solid var(--border);
+
+    border-radius:15px;
+
+    padding:35px;
+
+    position:fixed;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-45%) scale(.96);
+
+    z-index:2200;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+}
+
+.modal-overlay.active .account-modal{
+    transform:translate(-50%,-50%) scale(1);
+}
+
+.account-modal h2{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:42px;
+
+    font-weight:400;
+
+    margin-bottom:5px;
+}
+
+.modal-subtitle{
+    color:var(--muted);
+
+    font-size:11px;
+
+    margin-bottom:28px;
+}
+
+.modal-close{
+    position:absolute;
+
+    top:18px;
+    left:18px;
+
+    width:32px;
+    height:32px;
+
+    border:1px solid var(--border);
+
+    border-radius:50%;
+
+    background:transparent;
+
+    color:var(--text);
+}
+
+.form-group{
+    margin-bottom:17px;
+}
+
+.form-group label{
+    display:block;
+
+    font-size:11px;
+
+    color:var(--muted);
+
+    margin-bottom:8px;
+}
+
+.form-group input{
+    width:100%;
+
+    padding:14px;
+
+    border:1px solid var(--border);
+
+    border-radius:6px;
+
+    outline:none;
+
+    background:var(--card);
+
+    color:var(--text);
+}
+
+.form-group input:focus{
+    border-color:var(--cyan);
+}
+
+.account-submit{
+    width:100%;
+
+    padding:14px;
+
+    border:1px solid var(--cyan);
+
+    border-radius:6px;
+
+    background:var(--cyan);
+
+    color:#001412;
+
+    font-weight:700;
+}
+
+.switch-account{
+    text-align:center;
+
+    margin-top:20px;
+
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+.switch-account button{
+    border:none;
+
+    background:transparent;
+
+    color:var(--cyan);
+}
+
+.user-panel{
+    display:none;
+}
+
+.user-panel.active{
+    display:block;
+}
+
+.account-welcome{
+    padding:20px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    margin-bottom:15px;
+
+    line-height:2.2;
+}
+
+.account-welcome span{
+    color:var(--cyan);
+}
+
+
+/* =====================================================
+   PRODUCT MODAL
+===================================================== */
+
+.product-modal{
+    position:fixed;
+
+    width:min(950px,94%);
+
+    max-height:90vh;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-45%) scale(.96);
+
+    z-index:4100;
+
+    display:grid;
+
+    grid-template-columns:.8fr 1.2fr;
+
+    background:var(--bg2);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 40px 120px rgba(0,0,0,.65);
+
+    transition:.4s;
+}
+
+.product-modal-overlay.active .product-modal{
+    transform:translate(-50%,-50%) scale(1);
+}
+
+.product-modal-close{
+    position:absolute;
+
+    top:15px;
+    left:15px;
+
+    width:36px;
+    height:36px;
+
+    z-index:5;
+
+    border:1px solid var(--border);
+
+    border-radius:50%;
+
+    background:rgba(0,0,0,.2);
+
+    color:var(--text);
+
+    font-size:20px;
+}
+
+.product-modal-image{
+    min-height:600px;
+
+    display:grid;
+    place-items:center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(25,230,210,.15),
+            transparent 55%
+        );
+}
+
+.modal-product{
+    width:200px;
+    height:310px;
+
+    border:1px solid var(--cyan);
+
+    border-radius:25px;
+
+    background:linear-gradient(145deg,#263434,#020606);
+
+    display:grid;
+    place-items:center;
+
+    color:var(--cyan);
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:30px;
+
+    letter-spacing:5px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.7),
+        0 0 50px rgba(25,230,210,.15);
+}
+
+.product-modal-content{
+    padding:55px 45px;
+
+    overflow-y:auto;
+}
+
+.product-modal-content h2{
+    font-size:40px;
+    font-weight:500;
+
+    margin-bottom:30px;
+}
+
+.option-section{
+    margin-bottom:24px;
+}
+
+.option-section>label{
+    display:block;
+
+    font-size:12px;
+
+    color:var(--muted);
+
+    margin-bottom:10px;
+}
+
+.option-grid{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:9px;
+}
+
+.option-btn{
+    min-height:48px;
+
+    border:1px solid var(--border);
+
+    background:var(--card);
+
+    color:var(--text);
+
+    border-radius:6px;
+
+    padding:10px 13px;
+
+    transition:.25s;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:11px;
+}
+
+.option-btn:hover{
+    border-color:var(--cyan);
+}
+
+.option-btn.active{
+    border-color:var(--cyan);
+
+    background:rgba(25,230,210,.09);
+
+    color:var(--cyan);
+
+    box-shadow:inset 0 0 20px rgba(25,230,210,.05);
+}
+
+.quantity-selector{
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+}
+
+.quantity-selector button{
+    width:38px;
+    height:38px;
+
+    border:1px solid var(--border);
+
+    background:transparent;
+
+    color:var(--text);
+
+    border-radius:5px;
+
+    font-size:18px;
+}
+
+.quantity-selector button:hover{
+    border-color:var(--cyan);
+    color:var(--cyan);
+}
+
+.quantity-selector span{
+    min-width:30px;
+
+    text-align:center;
+}
+
+.live-price{
+    margin-top:25px;
+
+    padding:18px 0;
+
+    border-top:1px solid var(--border);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.live-price span{
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+.live-price strong{
+    color:var(--cyan);
+
+    font-size:26px;
+}
+
+.modal-add-cart{
+    width:100%;
+
+    padding:16px;
+
+    border:1px solid var(--cyan);
+
+    border-radius:6px;
+
+    background:var(--cyan);
+
+    color:#001412;
+
+    font-weight:700;
+}
+
+
+/* =====================================================
+   ADMIN
+===================================================== */
+
+.admin-panel{
+    position:fixed;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-45%) scale(.96);
+
+    width:min(1100px,94%);
+
+    max-height:92vh;
+
+    z-index:3100;
+
+    background:var(--bg2);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 40px 120px rgba(0,0,0,.7);
+
+    transition:.4s;
+}
+
+.admin-overlay.active .admin-panel{
+    transform:translate(-50%,-50%) scale(1);
+}
+
+
+/* ADMIN LOGIN */
+
+.admin-login{
+    width:min(420px,100%);
+
+    margin:auto;
+
+    padding:45px;
+}
+
+.admin-login h2{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:42px;
+
+    font-weight:400;
+}
+
+.admin-login p{
+    color:var(--muted);
+
+    font-size:11px;
+
+    margin-bottom:30px;
+}
+
+
+/* DASHBOARD */
+
+.admin-dashboard{
+    display:none;
+
+    height:92vh;
+}
+
+.admin-dashboard.active{
+    display:grid;
+
+    grid-template-columns:220px 1fr;
+}
+
+.admin-sidebar{
+    border-left:1px solid var(--border);
+
+    padding:25px;
+
+    background:var(--card);
+}
+
+.admin-brand{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:25px;
+
+    margin-bottom:35px;
+}
+
+.admin-nav-btn{
+    width:100%;
+
+    padding:13px;
+
+    margin-bottom:7px;
+
+    border:1px solid transparent;
+
+    border-radius:6px;
+
+    background:transparent;
+
+    color:var(--muted);
+
+    text-align:right;
+}
+
+.admin-nav-btn:hover,
+.admin-nav-btn.active{
+    color:var(--cyan);
+
+    border-color:var(--border);
+
+    background:rgba(25,230,210,.05);
+}
+
+.admin-main{
+    overflow-y:auto;
+
+    padding:35px;
+}
+
+.admin-top{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+}
+
+.admin-top h2{
+    font-size:27px;
+
+    font-weight:500;
+}
+
+.admin-close{
+    width:38px;
+    height:38px;
+
+    border:1px solid var(--border);
+
+    border-radius:50%;
+
+    background:transparent;
+
+    color:var(--text);
+}
+
+
+/* STATS */
+
+.admin-stats{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:15px;
+
+    margin-bottom:30px;
+}
+
+.stat-card{
+    padding:22px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:var(--card);
+}
+
+.stat-card span{
+    display:block;
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    margin-bottom:8px;
+}
+
+.stat-card strong{
+    font-size:25px;
+
+    color:var(--cyan);
+}
+
+
+/* ADMIN PRODUCT */
+
+.admin-section{
+    display:none;
+}
+
+.admin-section.active{
+    display:block;
+}
+
+.admin-section-title{
+    font-size:18px;
+
+    margin-bottom:15px;
+}
+
+.admin-product{
+    display:grid;
+
+    grid-template-columns:1fr 120px 120px 90px;
+
+    gap:10px;
+
+    align-items:center;
+
+    padding:15px;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    margin-bottom:8px;
+
+    background:var(--card);
+}
+
+.admin-product input{
+    width:100%;
+
+    padding:9px;
+
+    border:1px solid var(--border);
+
+    border-radius:5px;
+
+    background:transparent;
+
+    color:var(--text);
+
+    outline:none;
+}
+
+.admin-product button{
+    padding:9px;
+
+    border:1px solid var(--cyan);
+
+    background:transparent;
+
+    color:var(--cyan);
+
+    border-radius:5px;
+}
+
+.admin-product button:hover{
+    background:var(--cyan);
+
+    color:#001412;
+}
+
+.status{
+    font-size:10px;
+
+    padding:5px 8px;
+
+    border-radius:20px;
+
+    display:inline-block;
+}
+
+.status.on{
+    color:var(--success);
+
+    border:1px solid var(--success);
+}
+
+.status.off{
+    color:var(--danger);
+
+    border:1px solid var(--danger);
+}
+
+
+/* ORDERS */
+
+.order-card{
+    border:1px solid var(--border);
+
+    border-radius:9px;
+
+    padding:18px;
+
+    margin-bottom:10px;
+
+    background:var(--card);
+}
+
+.order-card-head{
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+}
+
+.order-card small{
+    color:var(--muted);
+}
+
+.order-item{
+    padding:8px 0;
+
+    border-bottom:1px solid var(--border);
+
+    font-size:11px;
+}
+
+.order-total{
+    text-align:left;
+
+    margin-top:12px;
+
+    color:var(--cyan);
+
+    font-weight:700;
+}
+
+
+/* =====================================================
+   CHECKOUT
+===================================================== */
+
+.checkout-modal{
+    position:fixed;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-45%) scale(.96);
+
+    width:min(600px,92%);
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    z-index:4500;
+
+    background:var(--bg2);
+
+    border:1px solid var(--border);
+
+    border-radius:15px;
+
+    padding:35px;
+
+    transition:.35s;
+}
+
+.modal-overlay.checkout-active .checkout-modal{
+    transform:translate(-50%,-50%) scale(1);
+}
+
+.checkout-summary{
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    padding:15px;
+
+    margin:20px 0;
+}
+
+.checkout-summary-row{
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:9px 0;
+
+    border-bottom:1px solid var(--border);
+
+    font-size:11px;
+}
+
+.checkout-summary-row:last-child{
+    border-bottom:none;
+}
+
+.checkout-total{
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:20px;
+
+    font-size:20px;
+
+    color:var(--cyan);
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast{
+    position:fixed;
+
+    bottom:25px;
+    left:50%;
+
+    transform:translateX(-50%) translateY(30px);
+
+    background:var(--bg2);
+
+    border:1px solid var(--cyan);
+
+    color:var(--text);
+
+    padding:13px 22px;
+
+    border-radius:7px;
+
+    z-index:6000;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.35s;
+
+    font-size:11px;
+}
+
+.toast.show{
+    opacity:1;
+
+    transform:translateX(-50%) translateY(0);
+}
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes floating{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-18px);
+    }
+}
+
+@keyframes portalGlow{
+    0%,100%{
+        box-shadow:
+            0 0 35px rgba(25,230,210,.25),
+            inset 0 0 30px rgba(25,230,210,.1);
+    }
+
+    50%{
+        box-shadow:
+            0 0 70px rgba(25,230,210,.45),
+            inset 0 0 45px rgba(25,230,210,.15);
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:850px){
+
+    .hero-title{
+        right:50%;
+
+        transform:translate(50%,-50%);
+
+        width:100%;
+
+        text-align:center;
+    }
+
+    .hero-title h1{
+        font-size:75px;
+    }
+
+    .hero-visual{
+        width:100%;
+        left:0;
+        opacity:.28;
+    }
+
+    .portal{
+        left:50%;
+        transform:translateX(-50%);
+    }
+
+    .hero-product{
+        left:50%;
+        transform:translateX(-50%);
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .featured{
+        grid-template-columns:1fr;
+    }
+
+    .admin-dashboard.active{
+        grid-template-columns:1fr;
+    }
+
+    .admin-sidebar{
+        display:none;
+    }
+
+    .admin-stats{
+        grid-template-columns:1fr;
+    }
+
+    .admin-product{
+        grid-template-columns:1fr;
+    }
+
+    .product-modal{
+        grid-template-columns:1fr;
+
+        max-height:94vh;
+    }
+
+    .product-modal-image{
+        min-height:280px;
+    }
+
+    .modal-product{
+        width:140px;
+        height:210px;
+    }
+
+    .product-modal-content{
+        padding:35px 25px;
+    }
+}
+
+@media(max-width:500px){
+
+    .logo-text{
+        font-size:18px;
+    }
+
+    .theme-toggle{
+        width:52px;
+    }
+
+    .hero-title h1{
+        font-size:65px;
+    }
+
+    .section{
+        padding:80px 0;
+    }
+
+    .section-title{
+        font-size:37px;
+    }
+
+    .featured-content{
+        padding:40px 25px;
+    }
+
+    .featured-content h2{
+        font-size:48px;
+    }
+
+    .option-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        gap:10px;
+        text-align:center;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+    <a href="#" class="logo">
+
+        <div class="logo-symbol">
+            GG
+        </div>
+
+        <div class="logo-text">
+            GHOST GATE
+        </div>
+
+    </a>
+
+
+    <div class="header-actions">
+
+        <!-- ACCOUNT -->
+        <button class="icon-btn" id="accountBtn">
+
+            <svg width="19" height="19"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="1.5">
+
+                <circle cx="12" cy="8" r="4"></circle>
+
+                <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"></path>
+
+            </svg>
+
+        </button>
+
+
+        <!-- CART -->
+        <button class="icon-btn" id="cartBtn">
+
+            <svg width="19" height="19"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="1.5">
+
+                <path d="M6 8h12l1 13H5L6 8z"></path>
+
+                <path d="M9 8a3 3 0 0 1 6 0"></path>
+
+            </svg>
+
+            <span class="cart-count" id="cartCount">
+                0
+            </span>
+
+        </button>
+
+
+        <!-- THEME -->
+        <button class="theme-toggle" id="themeToggle">
+
+            <span>☀</span>
+            <span>☾</span>
+
+            <div class="theme-circle"></div>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-title">
+
+        <h1>
+            GHOST<br>
+            GATE
+        </h1>
+
+    </div>
+
+
+    <div class="hero-visual">
+
+        <div class="portal"></div>
+
+        <div class="hero-product"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PRODUCTS
+===================================================== -->
+
+<section class="section" id="collection">
+
+<div class="container">
+
+    <div class="section-heading">
+
+        <div class="eyebrow">
+            COLLECTION
+        </div>
+
+        <h2 class="section-title">
+            پلن‌های GHOST GATE
+        </h2>
+
+    </div>
+
+
+    <div class="products" id="productsContainer">
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FEATURED
+===================================================== -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="featured">
+
+    <div class="featured-image">
+
+        <div class="featured-bottle">
+            GHOST GATE
+        </div>
+
+    </div>
+
+
+    <div class="featured-content">
+
+        <div class="eyebrow">
+            PREMIUM
+        </div>
+
+        <h2>
+            DIAMOND
+        </h2>
+
+        <p>
+            بالاترین سطح تجربه Ghost Gate با امکانات کامل.
+        </p>
+
+        <div
+            class="product-price"
+            style="color:var(--diamond)"
+            id="featuredPrice">
+            $99.00
+        </div>
+
+        <br>
+
+        <button
+            class="modal-add-cart"
+            onclick="openProduct('پلن الماسی')">
+
+            انتخاب پلن الماسی
+
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     BRAND
+===================================================== -->
+
+<section class="brand">
+
+<div class="container">
+
+    <div class="eyebrow">
+        GHOST GATE
+    </div>
+
+    <h2>
+        ENTER THE GATE.
+    </h2>
+
+    <p>
+        تجربه‌ای متفاوت، طراحی‌شده برای کسانی
+        که استانداردهای متفاوتی دارند.
+    </p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="container">
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 GHOST GATE
+        </span>
+
+        <span>
+            ALL RIGHTS RESERVED
+        </span>
+
+    </div>
+
+</div>
+
+</footer>
+
+
+<!-- =====================================================
+     CART OVERLAY
+===================================================== -->
+
+<div class="cart-overlay" id="cartOverlay"></div>
+
+
+<!-- =====================================================
+     CART
+===================================================== -->
+
+<div class="cart-drawer" id="cartDrawer">
+
+    <div class="cart-header">
+
+        <h2>
+            سبد خرید
+        </h2>
+
+        <button class="close-btn" id="closeCart">
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="cart-items" id="cartItems">
+
+        <div class="empty-cart">
+            سبد خرید شما خالی است.
+        </div>
+
+    </div>
+
+
+    <div class="cart-footer">
+
+        <div class="cart-total">
+
+            <span>
+                مجموع سفارش
+            </span>
+
+            <strong id="cartTotal">
+                $0.00
+            </strong>
+
+        </div>
+
+
+        <div class="cart-buttons">
+
+            <button
+                class="clear-cart-btn"
+                onclick="clearCart()">
+
+                خالی کردن
+
+            </button>
+
+            <button
+                class="checkout-btn"
+                onclick="openCheckout()">
+
+                پرداخت
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ACCOUNT MODAL
+===================================================== -->
+
+<div class="modal-overlay" id="accountModal">
+
+<div class="account-modal">
+
+<button class="modal-close" onclick="closeAccount()">
+    ×
+</button>
+
+
+<!-- LOGIN -->
+
+<div id="loginPanel">
+
+    <h2>
+        ورود
+    </h2>
+
+    <div class="modal-subtitle">
+        ورود به حساب Ghost Gate
+    </div>
+
+
+    <div class="form-group">
+
+        <label>
+            نام کاربری
+        </label>
+
+        <input
+            id="loginUsername"
+            type="text"
+            placeholder="Username">
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label>
+            رمز عبور
+        </label>
+
+        <input
+            id="loginPassword"
+            type="password"
+            placeholder="Password">
+
+    </div>
+
+
+    <button
+        class="account-submit"
+        onclick="loginUser()">
+
+        ورود
+
+    </button>
+
+
+    <div class="switch-account">
+
+        حساب ندارید؟
+
+        <button onclick="showRegister()">
+            ساخت حساب
+        </button>
+
+    </div>
+
+
+    <div class="switch-account">
+
+        مدیر سایت هستید؟
+
+        <button onclick="openAdmin()">
+            پنل مدیریت
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- REGISTER -->
+
+<div id="registerPanel" style="display:none">
+
+    <h2>
+        ساخت حساب
+    </h2>
+
+    <div class="modal-subtitle">
+        فقط Username و Password
+    </div>
+
+
+    <div class="form-group">
+
+        <label>
+            نام کاربری
+        </label>
+
+        <input
+            id="registerUsername"
+            type="text"
+            placeholder="Username">
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label>
+            رمز عبور
+        </label>
+
+        <input
+            id="registerPassword"
+            type="password"
+            placeholder="Password">
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label>
+            تکرار رمز عبور
+        </label>
+
+        <input
+            id="registerPassword2"
+            type="password"
+            placeholder="Repeat Password">
+
+    </div>
+
+
+    <button
+        class="account-submit"
+        onclick="registerUser()">
+
+        ساخت حساب
+
+    </button>
+
+
+    <div class="switch-account">
+
+        قبلاً حساب ساخته‌اید؟
+
+        <button onclick="showLogin()">
+            ورود
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- USER -->
+
+<div class="user-panel" id="userPanel">
+
+    <h2>
+        حساب شما
+    </h2>
+
+    <div class="modal-subtitle">
+        خوش آمدید به Ghost Gate
+    </div>
+
+
+    <div class="account-welcome">
+
+        نام کاربری:
+
+        <br>
+
+        <span id="currentUsername"></span>
+
+    </div>
+
+
+    <button
+        class="account-submit"
+        onclick="logoutUser()">
+
+        خروج از حساب
+
+    </button>
+
+
+    <br><br>
+
+
+    <button
+        class="account-submit"
+        onclick="openAdmin()">
+
+        پنل مدیریت
+
+    </button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     PRODUCT MODAL
+===================================================== -->
+
+<div class="product-modal-overlay" id="productModal">
+
+<div class="product-modal">
+
+<button
+    class="product-modal-close"
+    onclick="closeProductModal()">
+
+    ×
+
+</button>
+
+
+<div class="product-modal-image">
+
+    <div class="modal-product">
+        GG
+    </div>
+
+</div>
+
+
+<div class="product-modal-content">
+
+    <div class="eyebrow">
+        GHOST GATE
+    </div>
+
+    <h2 id="selectedProductName">
+        پلن الماسی
+    </h2>
+
+
+    <!-- DURATION -->
+
+    <div class="option-section">
+
+        <label>
+            مدت اشتراک
+        </label>
+
+
+        <div class="option-grid">
+
+            <button
+                class="option-btn active"
+                data-month="1"
+                onclick="selectDuration(this,1)">
+
+                ۱ ماه
+
+            </button>
+
+
+            <button
+                class="option-btn"
+                data-month="3"
+                onclick="selectDuration(this,3)">
+
+                ۳ ماه
+
+            </button>
+
+
+            <button
+                class="option-btn"
+                data-month="6"
+                onclick="selectDuration(this,6)">
+
+                ۶ ماه
+
+            </button>
+
+
+            <button
+                class="option-btn"
+                data-month="12"
+                onclick="selectDuration(this,12)">
+
+                ۱ سال
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- USERS -->
+
+    <div class="option-section">
+
+        <label>
+            تعداد کاربر
+        </label>
+
+
+        <div class="option-grid" id="userOptions">
+
+            <button
+                class="option-btn active"
+                onclick="selectUsers(this,'تک کاربره',0)">
+
+                تک کاربره
+
+            </button>
+
+
+            <button
+                class="option-btn"
+                onclick="selectUsers(this,'دو کاربره',15)">
+
+                دو کاربره
+
+            </button>
+
+
+            <button
+                class="option-btn"
+                onclick="selectUsers(this,'سه کاربره',30)">
+
+                سه کاربره
+
+            </button>
+
+
+            <button
+                class="option-btn"
+                onclick="selectUsers(this,'نامحدود',50)">
+
+                نامحدود
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- QUANTITY -->
+
+    <div class="option-section">
+
+        <label>
+            تعداد خرید
+        </label>
+
+
+        <div class="quantity-selector">
+
+            <button onclick="changeProductQuantity(-1)">
+                −
+            </button>
+
+            <span id="productQuantity">
+                1
+            </span>
+
+            <button onclick="changeProductQuantity(1)">
+                +
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="live-price">
+
+        <span>
+            قیمت نهایی
+        </span>
+
+        <strong id="liveProductPrice">
+            $99.00
+        </strong>
+
+    </div>
+
+
+    <button
+        class="modal-add-cart"
+        onclick="addConfiguredProduct()">
+
+        افزودن به سبد خرید
+
+    </button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     CHECKOUT
+===================================================== -->
+
+<div class="modal-overlay" id="checkoutModal">
+
+<div class="checkout-modal">
+
+<button
+    class="modal-close"
+    onclick="closeCheckout()">
+
+    ×
+
+</button>
+
+
+<h2 style="font-family:'Cormorant Garamond';font-size:40px;">
+    پرداخت سفارش
+</h2>
+
+<div class="modal-subtitle">
+    اطلاعات سفارش خود را بررسی کنید.
+</div>
+
+
+<div
+    class="checkout-summary"
+    id="checkoutSummary">
+</div>
+
+
+<div class="checkout-total">
+
+    <span>
+        مبلغ نهایی
+    </span>
+
+    <strong id="checkoutTotal">
+        $0.00
+    </strong>
+
+</div>
+
+
+<br>
+
+
+<button
+    class="account-submit"
+    onclick="completeOrder()">
+
+    تأیید و ثبت سفارش
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     ADMIN
+===================================================== -->
+
+<div class="admin-overlay" id="adminOverlay">
+
+<div class="admin-panel">
+
+
+<!-- LOGIN -->
+
+<div class="admin-login" id="adminLogin">
+
+    <button
+        class="admin-close"
+        onclick="closeAdmin()"
+        style="position:absolute;top:15px;left:15px">
+
+        ×
+
+    </button>
+
+
+    <div class="eyebrow">
+        ADMINISTRATION
+    </div>
+
+    <h2>
+        پنل مدیریت
+    </h2>
+
+    <p>
+        برای ورود اطلاعات مدیر را وارد کنید.
+    </p>
+
+
+    <div class="form-group">
+
+        <label>
+            نام کاربری مدیر
+        </label>
+
+        <input
+            id="adminUsername"
+            type="text"
+            placeholder="admin">
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label>
+            رمز عبور مدیر
+        </label>
+
+        <input
+            id="adminPassword"
+            type="password"
+            placeholder="admin">
+
+    </div>
+
+
+    <button
+        class="account-submit"
+        onclick="adminLogin()">
+
+        ورود به پنل
+
+    </button>
+
+</div>
+
+
+<!-- DASHBOARD -->
+
+<div
+    class="admin-dashboard"
+    id="adminDashboard">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="admin-sidebar">
+
+        <div class="admin-brand">
+            GHOST GATE
+        </div>
+
+
+        <button
+            class="admin-nav-btn active"
+            onclick="showAdminSection('products',this)">
+
+            محصولات
+
+        </button>
+
+
+        <button
+            class="admin-nav-btn"
+            onclick="showAdminSection('orders',this)">
+
+            سفارش‌ها
+
+        </button>
+
+
+        <button
+            class="admin-nav-btn"
+            onclick="showAdminSection('overview',this)">
+
+            آمار
+
+        </button>
+
+
+        <button
+            class="admin-nav-btn"
+            onclick="adminLogout()">
+
+            خروج
+
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="admin-main">
+
+
+        <div class="admin-top">
+
+            <h2>
+                داشبورد مدیریت
+            </h2>
+
+
+            <button
+                class="admin-close"
+                onclick="closeAdmin()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <!-- PRODUCTS -->
+
+        <section
+            class="admin-section active"
+            id="adminProducts">
+
+            <div class="admin-section-title">
+                مدیریت محصولات
+            </div>
+
+
+            <div id="adminProductsList">
+            </div>
+
+        </section>
+
+
+        <!-- ORDERS -->
+
+        <section
+            class="admin-section"
+            id="adminOrders">
+
+            <div class="admin-section-title">
+                سفارش‌های ثبت شده
+            </div>
+
+
+            <div id="adminOrdersList">
+            </div>
+
+        </section>
+
+
+        <!-- OVERVIEW -->
+
+        <section
+            class="admin-section"
+            id="adminOverview">
+
+            <div class="admin-stats">
+
+                <div class="stat-card">
+
+                    <span>
+                        محصولات
+                    </span>
+
+                    <strong id="statProducts">
+                        3
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span>
+                        سفارش‌ها
+                    </span>
+
+                    <strong id="statOrders">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span>
+                        درآمد
+                    </span>
+
+                    <strong id="statRevenue">
+                        $0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+/* =====================================================
+   DATABASE
+===================================================== */
+
+const defaultProducts = [
+
+    {
+        id:"silver",
+        name:"پلن نقره ای",
+        price:29,
+        theme:"silver",
+        active:true
+    },
+
+    {
+        id:"gold",
+        name:"پلن طلایی",
+        price:59,
+        theme:"gold",
+        active:true
+    },
+
+    {
+        id:"diamond",
+        name:"پلن الماسی",
+        price:99,
+        theme:"diamond",
+        active:true
+    }
+
+];
+
+
+let products =
+    JSON.parse(
+        localStorage.getItem("ggProducts")
+    ) || defaultProducts;
+
+
+let cart =
+    JSON.parse(
+        localStorage.getItem("ggCart")
+    ) || [];
+
+
+let orders =
+    JSON.parse(
+        localStorage.getItem("ggOrders")
+    ) || [];
+
+
+/* =====================================================
+   SAVE
+===================================================== */
+
+function saveProducts(){
+
+    localStorage.setItem(
+        "ggProducts",
+        JSON.stringify(products)
+    );
+
+}
+
+function saveCart(){
+
+    localStorage.setItem(
+        "ggCart",
+        JSON.stringify(cart)
+    );
+
+}
+
+function saveOrders(){
+
+    localStorage.setItem(
+        "ggOrders",
+        JSON.stringify(orders)
+    );
+
+}
+
+
+/* =====================================================
+   THEME
+===================================================== */
+
+document
+.getElementById("themeToggle")
+.addEventListener("click",()=>{
+
+    document.body.classList.toggle("light");
+
+    localStorage.setItem(
+        "ggTheme",
+        document.body.classList.contains("light")
+        ?"light"
+        :"dark"
+    );
+
+});
+
+
+if(
+    localStorage.getItem("ggTheme")==="light"
+){
+
+    document.body.classList.add("light");
+
+}
+
+
+/* =====================================================
+   RENDER PRODUCTS
+===================================================== */
+
+function renderProducts(){
+
+    const container =
+        document.getElementById(
+            "productsContainer"
+        );
+
+
+    container.innerHTML =
+        products
+        .filter(p=>p.active)
+        .map(product=>`
+
+            <article
+                class="product-card ${product.theme}">
+
+                <div class="product-image">
+
+                    <div class="fake-product">
+                        GG
+                    </div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <h3>
+                        ${product.name}
+                    </h3>
+
+                    <div class="product-price">
+                        $${Number(product.price).toFixed(2)}
+                    </div>
+
+
+                    <div class="product-actions">
+
+                        <button
+                            class="product-link"
+                            onclick="openProduct('${product.name}')">
+
+                            مشاهده محصول
+
+                        </button>
+
+
+                        <button
+                            class="add-cart"
+                            onclick="openProduct('${product.name}')">
+
+                            +
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        `)
+        .join("");
+
+
+    const diamond =
+        products.find(
+            p=>p.id==="diamond"
+        );
+
+
+    if(diamond){
+
+        document.getElementById(
+            "featuredPrice"
+        ).textContent =
+            "$"+Number(diamond.price).toFixed(2);
+
+    }
+
+}
+
+
+/* =====================================================
+   PRODUCT MODAL
+===================================================== */
+
+let selectedProduct = null;
+
+let selectedDuration = 1;
+
+let selectedUsers = {
+    name:"تک کاربره",
+    price:0
+};
+
+let selectedQuantity = 1;
+
+
+/* OPEN */
+
+function openProduct(name){
+
+    const product =
+        products.find(
+            p=>p.name===name
+        );
+
+
+    if(!product){
+
+        showToast("محصول پیدا نشد");
+
+        return;
+    }
+
+
+    selectedProduct = product;
+
+    selectedDuration = 1;
+
+    selectedUsers = {
+        name:"تک کاربره",
+        price:0
+    };
+
+    selectedQuantity = 1;
+
+
+    document.getElementById(
+        "selectedProductName"
+    ).textContent =
+        product.name;
+
+
+    document.getElementById(
+        "productQuantity"
+    ).textContent = "1";
+
+
+    document
+    .querySelectorAll("[data-month]")
+    .forEach(btn=>
+        btn.classList.remove("active")
+    );
+
+
+    document
+    .querySelector('[data-month="1"]')
+    .classList.add("active");
+
+
+    document
+    .querySelectorAll("#userOptions .option-btn")
+    .forEach(btn=>
+        btn.classList.remove("active")
+    );
+
+
+    document
+    .querySelector("#userOptions .option-btn")
+    .classList.add("active");
+
+
+    updateProductPrice();
+
+
+    document
+    .getElementById("productModal")
+    .classList.add("active");
+
+
+    document.body.style.overflow="hidden";
+
+}
+
+
+/* CLOSE */
+
+function closeProductModal(){
+
+    document
+    .getElementById("productModal")
+    .classList.remove("active");
+
+    document.body.style.overflow="";
+
+}
+
+
+/* DURATION */
+
+function selectDuration(button,months){
+
+    document
+    .querySelectorAll("[data-month]")
+    .forEach(btn=>
+        btn.classList.remove("active")
+    );
+
+
+    button.classList.add("active");
+
+    selectedDuration=months;
+
+    updateProductPrice();
+
+}
+
+
+/* USERS */
+
+function selectUsers(button,name,price){
+
+    document
+    .querySelectorAll("#userOptions .option-btn")
+    .forEach(btn=>
+        btn.classList.remove("active")
+    );
+
+
+    button.classList.add("active");
+
+
+    selectedUsers={
+        name:name,
+        price:price
+    };
+
+
+    updateProductPrice();
+
+}
+
+
+/* QUANTITY */
+
+function changeProductQuantity(amount){
+
+    selectedQuantity+=amount;
+
+
+    if(selectedQuantity<1)
+        selectedQuantity=1;
+
+
+    if(selectedQuantity>99)
+        selectedQuantity=99;
+
+
+    document.getElementById(
+        "productQuantity"
+    ).textContent=
+        selectedQuantity;
+
+
+    updateProductPrice();
+
+}
+
+
+/* PRICE */
+
+function calculateProductPrice(){
+
+    let price =
+        Number(selectedProduct.price);
+
+
+    if(selectedDuration===3)
+        price+=15;
+
+    if(selectedDuration===6)
+        price+=30;
+
+    if(selectedDuration===12)
+        price+=50;
+
+
+    price+=selectedUsers.price;
+
+
+    return price;
+
+}
+
+
+function updateProductPrice(){
+
+    if(!selectedProduct)
+        return;
+
+
+    const total =
+        calculateProductPrice()
+        *
+        selectedQuantity;
+
+
+    document.getElementById(
+        "liveProductPrice"
+    ).textContent=
+        "$"+total.toFixed(2);
+
+}
+
+
+/* ADD */
+
+function addConfiguredProduct(){
+
+    const unitPrice =
+        calculateProductPrice();
+
+
+    const name =
+        `${selectedProduct.name} — ${selectedDuration} ماه — ${selectedUsers.name}`;
+
+
+    const existing =
+        cart.find(
+            item=>item.name===name
+        );
+
+
+    if(existing){
+
+        existing.quantity+=selectedQuantity;
+
+    }else{
+
+        cart.push({
+
+            id:
+                Date.now(),
+
+            name:name,
+
+            price:unitPrice,
+
+            quantity:selectedQuantity
+
+        });
+
+    }
+
+
+    saveCart();
+
+    renderCart();
+
+    closeProductModal();
+
+    showToast(
+        "محصول به سبد خرید اضافه شد"
+    );
+
+}
+
+
+/* =====================================================
+   CART
+===================================================== */
+
+function renderCart(){
+
+    const items =
+        document.getElementById(
+            "cartItems"
+        );
+
+
+    if(cart.length===0){
+
+        items.innerHTML=`
+
+            <div class="empty-cart">
+                سبد خرید شما خالی است.
+            </div>
+
+        `;
+
+    }else{
+
+        items.innerHTML =
+            cart.map(
+                (item,index)=>`
+
+                <div class="cart-item">
+
+                    <div class="cart-item-image">
+                        GG
+                    </div>
+
+
+                    <div class="cart-item-info">
+
+                        <h4>
+                            ${item.name}
+                        </h4>
+
+
+                        <div class="cart-item-price">
+                            $${Number(item.price).toFixed(2)}
+                        </div>
+
+
+                        <div class="quantity">
+
+                            <button
+                                onclick="changeCartQuantity(${index},-1)">
+                                −
+                            </button>
+
+
+                            <span>
+                                ${item.quantity}
+                            </span>
+
+
+                            <button
+                                onclick="changeCartQuantity(${index},1)">
+                                +
+                            </button>
+
+
+                            <button
+                                class="remove-item"
+                                onclick="removeCartItem(${index})">
+
+                                حذف
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `
+            ).join("");
+
+    }
+
+
+    const count =
+        cart.reduce(
+            (sum,item)=>
+                sum+item.quantity,
+            0
+        );
+
+
+    const total =
+        cart.reduce(
+            (sum,item)=>
+                sum+
+                item.price*
+                item.quantity,
+            0
+        );
+
+
+    document.getElementById(
+        "cartCount"
+    ).textContent=count;
+
+
+    document.getElementById(
+        "cartTotal"
+    ).textContent=
+        "$"+total.toFixed(2);
+
+}
+
+
+function changeCartQuantity(index,amount){
+
+    cart[index].quantity+=amount;
+
+
+    if(cart[index].quantity<=0){
+
+        cart.splice(index,1);
+
+    }
+
+
+    saveCart();
+
+    renderCart();
+
+}
+
+
+function removeCartItem(index){
+
+    cart.splice(index,1);
+
+    saveCart();
+
+    renderCart();
+
+}
+
+
+function clearCart(){
+
+    if(cart.length===0)
+        return;
+
+
+    cart=[];
+
+    saveCart();
+
+    renderCart();
+
+    showToast(
+        "سبد خرید خالی شد"
+    );
+
+}
+
+
+/* CART OPEN */
+
+document
+.getElementById("cartBtn")
+.addEventListener("click",()=>{
+
+    document
+    .getElementById("cartDrawer")
+    .classList.add("active");
+
+
+    document
+    .getElementById("cartOverlay")
+    .classList.add("active");
+
+
+    document.body.style.overflow="hidden";
+
+});
+
+
+document
+.getElementById("closeCart")
+.addEventListener("click",closeCart);
+
+
+document
+.getElementById("cartOverlay")
+.addEventListener("click",closeCart);
+
+
+function closeCart(){
+
+    document
+    .getElementById("cartDrawer")
+    .classList.remove("active");
+
+
+    document
+    .getElementById("cartOverlay")
+    .classList.remove("active");
+
+
+    document.body.style.overflow="";
+
+}
+
+
+/* =====================================================
+   ACCOUNT
+===================================================== */
+
+document
+.getElementById("accountBtn")
+.addEventListener(
+    "click",
+    openAccount
+);
+
+
+function openAccount(){
+
+    document
+    .getElementById("accountModal")
+    .classList.add("active");
+
+
+    updateAccountUI();
+
+}
+
+
+function closeAccount(){
+
+    document
+    .getElementById("accountModal")
+    .classList.remove("active");
+
+}
+
+
+function showRegister(){
+
+    document.getElementById(
+        "loginPanel"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "registerPanel"
+    ).style.display="block";
+
+
+    document.getElementById(
+        "userPanel"
+    ).classList.remove("active");
+
+}
+
+
+function showLogin(){
+
+    document.getElementById(
+        "loginPanel"
+    ).style.display="block";
+
+
+    document.getElementById(
+        "registerPanel"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "userPanel"
+    ).classList.remove("active");
+
+}
+
+
+/* REGISTER */
+
+function registerUser(){
+
+    const username =
+        document.getElementById(
+            "registerUsername"
+        ).value.trim();
+
+
+    const password =
+        document.getElementById(
+            "registerPassword"
+        ).value;
+
+
+    const password2 =
+        document.getElementById(
+            "registerPassword2"
+        ).value;
+
+
+    if(!username || !password){
+
+        showToast(
+            "نام کاربری و رمز عبور را وارد کنید"
+        );
+
+        return;
+    }
+
+
+    if(password!==password2){
+
+        showToast(
+            "رمزهای عبور یکسان نیستند"
+        );
+
+        return;
+    }
+
+
+    const users =
+        JSON.parse(
+            localStorage.getItem("ggUsers")
+        ) || [];
+
+
+    if(
+        users.some(
+            u=>
+                u.username.toLowerCase()
+                ===
+                username.toLowerCase()
+        )
+    ){
+
+        showToast(
+            "این نام کاربری قبلاً استفاده شده"
+        );
+
+        return;
+    }
+
+
+    users.push({
+        username,
+        password
+    });
+
+
+    localStorage.setItem(
+        "ggUsers",
+        JSON.stringify(users)
+    );
+
+
+    localStorage.setItem(
+        "ggCurrentUser",
+        username
+    );
+
+
+    updateAccountUI();
+
+    showToast(
+        "حساب با موفقیت ساخته شد"
+    );
+
+}
+
+
+/* LOGIN */
+
+function loginUser(){
+
+    const username =
+        document.getElementById(
+            "loginUsername"
+        ).value.trim();
+
+
+    const password =
+        document.getElementById(
+            "loginPassword"
+        ).value;
+
+
+    const users =
+        JSON.parse(
+            localStorage.getItem("ggUsers")
+        ) || [];
+
+
+    const user =
+        users.find(
+            u=>
+                u.username===username
+                &&
+                u.password===password
+        );
+
+
+    if(!user){
+
+        showToast(
+            "نام کاربری یا رمز عبور اشتباه است"
+        );
+
+        return;
+    }
+
+
+    localStorage.setItem(
+        "ggCurrentUser",
+        username
+    );
+
+
+    updateAccountUI();
+
+    showToast(
+        "با موفقیت وارد شدید"
+    );
+
+}
+
+
+function logoutUser(){
+
+    localStorage.removeItem(
+        "ggCurrentUser"
+    );
+
+
+    showLogin();
+
+    showToast(
+        "از حساب خارج شدید"
+    );
+
+}
+
+
+function updateAccountUI(){
+
+    const username =
+        localStorage.getItem(
+            "ggCurrentUser"
+        );
+
+
+    if(username){
+
+        document.getElementById(
+            "loginPanel"
+        ).style.display="none";
+
+
+        document.getElementById(
+            "registerPanel"
+        ).style.display="none";
+
+
+        document.getElementById(
+            "userPanel"
+        ).classList.add("active");
+
+
+        document.getElementById(
+            "currentUsername"
+        ).textContent=username;
+
+    }else{
+
+        showLogin();
+
+    }
+
+}
+
+
+/* =====================================================
+   CHECKOUT
+===================================================== */
+
+function openCheckout(){
+
+    if(cart.length===0){
+
+        showToast(
+            "سبد خرید شما خالی است"
+        );
+
+        return;
+    }
+
+
+    const summary =
+        document.getElementById(
+            "checkoutSummary"
+        );
+
+
+    let total=0;
+
+
+    summary.innerHTML =
+        cart.map(item=>{
+
+            const itemTotal =
+                item.price*
+                item.quantity;
+
+
+            total+=itemTotal;
+
+
+            return `
+
+                <div class="checkout-summary-row">
+
+                    <span>
+                        ${item.name}
+                        × ${item.quantity}
+                    </span>
+
+                    <strong>
+                        $${itemTotal.toFixed(2)}
+                    </strong>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+
+    document.getElementById(
+        "checkoutTotal"
+    ).textContent=
+        "$"+total.toFixed(2);
+
+
+    document
+    .getElementById("checkoutModal")
+    .classList.add("active");
+
+
+    closeCart();
+
+}
+
+
+function closeCheckout(){
+
+    document
+    .getElementById("checkoutModal")
+    .classList.remove("active");
+
+}
+
+
+function completeOrder(){
+
+    const username =
+        localStorage.getItem(
+            "ggCurrentUser"
+        );
+
+
+    if(!username){
+
+        showToast(
+            "برای ثبت سفارش ابتدا وارد حساب شوید"
+        );
+
+        closeCheckout();
+
+        openAccount();
+
+        return;
+    }
+
+
+    const total =
+        cart.reduce(
+            (sum,item)=>
+                sum+
+                item.price*
+                item.quantity,
+            0
+        );
+
+
+    orders.push({
+
+        id:
+            "GG-"+Date.now(),
+
+        username:
+
+            username,
+
+        items:
+
+            [...cart],
+
+        total:
+
+            total,
+
+        date:
+
+            new Date().toLocaleString(
+                "fa-IR"
+            ),
+
+        status:
+
+            "در انتظار بررسی"
+
+    });
+
+
+    saveOrders();
+
+
+    cart=[];
+
+    saveCart();
+
+    renderCart();
+
+    closeCheckout();
+
+
+    showToast(
+        "سفارش شما با موفقیت ثبت شد"
+    );
+
+}
+
+
+/* =====================================================
+   ADMIN
+===================================================== */
+
+function openAdmin(){
+
+    closeAccount();
+
+
+    document
+    .getElementById("adminOverlay")
+    .classList.add("active");
+
+
+    document
+    .getElementById("adminLogin")
+    .style.display="block";
+
+
+    document
+    .getElementById("adminDashboard")
+    .classList.remove("active");
+
+}
+
+
+function closeAdmin(){
+
+    document
+    .getElementById("adminOverlay")
+    .classList.remove("active");
+
+}
+
+
+function adminLogin(){
+
+    const username =
+        document.getElementById(
+            "adminUsername"
+        ).value;
+
+
+    const password =
+        document.getElementById(
+            "adminPassword"
+        ).value;
+
+
+    if(
+        username==="admin"
+        &&
+        password==="admin"
+    ){
+
+        document
+        .getElementById("adminLogin")
+        .style.display="none";
+
+
+        document
+        .getElementById("adminDashboard")
+        .classList.add("active");
+
+
+        renderAdmin();
+
+        showToast(
+            "ورود مدیر موفق بود"
+        );
+
+    }else{
+
+        showToast(
+            "اطلاعات مدیر اشتباه است"
+        );
+
+    }
+
+}
+
+
+function adminLogout(){
+
+    document
+    .getElementById("adminLogin")
+    .style.display="block";
+
+
+    document
+    .getElementById("adminDashboard")
+    .classList.remove("active");
+
+}
+
+
+/* ADMIN NAV */
+
+function showAdminSection(section,button){
+
+    document
+    .querySelectorAll(".admin-nav-btn")
+    .forEach(
+        btn=>
+            btn.classList.remove("active")
+    );
+
+
+    button.classList.add("active");
+
+
+    document
+    .querySelectorAll(".admin-section")
+    .forEach(
+        sec=>
+            sec.classList.remove("active")
+    );
+
+
+    if(section==="products"){
+
+        document
+        .getElementById("adminProducts")
+        .classList.add("active");
+
+    }
+
+
+    if(section==="orders"){
+
+        document
+        .getElementById("adminOrders")
+        .classList.add("active");
+
+    }
+
+
+    if(section==="overview"){
+
+        document
+        .getElementById("adminOverview")
+        .classList.add("active");
+
+    }
+
+
+    renderAdmin();
+
+}
+
+
+/* RENDER ADMIN */
+
+function renderAdmin(){
+
+    renderAdminProducts();
+
+    renderAdminOrders();
+
+    renderAdminStats();
+
+}
+
+
+/* ADMIN PRODUCTS */
+
+function renderAdminProducts(){
+
+    const container =
+        document.getElementById(
+            "adminProductsList"
+        );
+
+
+    container.innerHTML =
+        products.map(
+            product=>`
+
+            <div class="admin-product">
+
+                <input
+                    value="${product.name}"
+                    id="name-${product.id}">
+
+
+                <input
+                    type="number"
+                    value="${product.price}"
+                    id="price-${product.id}">
+
+
+                <span>
+
+                    <span class="status ${product.active?"on":"off"}">
+
+                        ${product.active?"فعال":"غیرفعال"}
+
+                    </span>
+
+                </span>
+
+
+                <button
+                    onclick="saveProduct('${product.id}')">
+
+                    ذخیره
+
+                </button>
+
+            </div>
+
+            `
+        ).join("");
+
+}
+
+
+/* SAVE PRODUCT */
+
+function saveProduct(id){
+
+    const product =
+        products.find(
+            p=>p.id===id
+        );
+
+
+    const name =
+        document.getElementById(
+            "name-"+id
+        ).value;
+
+
+    const price =
+        Number(
+            document.getElementById(
+                "price-"+id
+            ).value
+        );
+
+
+    if(!name || price<=0){
+
+        showToast(
+            "نام و قیمت معتبر وارد کنید"
+        );
+
+        return;
+    }
+
+
+    product.name=name;
+
+    product.price=price;
+
+
+    saveProducts();
+
+    renderProducts();
+
+    renderAdmin();
+
+
+    showToast(
+        "محصول ذخیره شد"
+    );
+
+}
+
+
+/* ADMIN ORDERS */
+
+function renderAdminOrders(){
+
+    const container =
+        document.getElementById(
+            "adminOrdersList"
+        );
+
+
+    if(orders.length===0){
+
+        container.innerHTML=`
+
+            <div class="empty-cart">
+                هنوز سفارشی ثبت نشده است.
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        [...orders]
+        .reverse()
+        .map(
+            order=>`
+
+            <div class="order-card">
+
+                <div class="order-card-head">
+
+                    <strong>
+                        ${order.id}
+                    </strong>
+
+                    <small>
+                        ${order.date}
+                    </small>
+
+                </div>
+
+
+                <small>
+                    مشتری: ${order.username}
+                </small>
+
+
+                <br><br>
+
+
+                ${
+                    order.items
+                    .map(
+                        item=>`
+
+                        <div class="order-item">
+
+                            ${item.name}
+
+                            × ${item.quantity}
+
+                            — $${(
+                                item.price*
+                                item.quantity
+                            ).toFixed(2)}
+
+                        </div>
+
+                        `
+                    )
+                    .join("")
+                }
+
+
+                <div class="order-total">
+
+                    مجموع:
+                    $${order.total.toFixed(2)}
+
+                </div>
+
+            </div>
+
+            `
+        )
+        .join("");
+
+}
+
+
+/* STATS */
+
+function renderAdminStats(){
+
+    const revenue =
+        orders.reduce(
+            (sum,order)=>
+                sum+order.total,
+            0
+        );
+
+
+    document.getElementById(
+        "statProducts"
+    ).textContent=
+        products.length;
+
+
+    document.getElementById(
+        "statOrders"
+    ).textContent=
+        orders.length;
+
+
+    document.getElementById(
+        "statRevenue"
+    ).textContent=
+        "$"+revenue.toFixed(2);
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+let toastTimer;
+
+
+function showToast(message){
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent=
+        message;
+
+
+    toast.classList.add("show");
+
+
+    clearTimeout(toastTimer);
+
+
+    toastTimer =
+        setTimeout(
+            ()=>{
+                toast.classList.remove("show");
+            },
+            2500
+        );
+
+}
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+renderProducts();
+
+renderCart();
+
+</script>
+
+</body>
+</html>
